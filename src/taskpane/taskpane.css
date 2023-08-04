@@ -1,0 +1,13 @@
+ul, li{
+    list-style-type: none;
+}
+
+.word-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.word-list li{
+    cursor: pointer;
+}
