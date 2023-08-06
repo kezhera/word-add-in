@@ -7,8 +7,6 @@ const CheckTextTest = async (text) => {
     ToolsLangCode: "GEO"
   })
 
-  console.log(body)
-
   const res = await fetch("https://enagramm.com/API/SpellChecker/CheckTextTest", {
     method: "POST",
     headers: {
@@ -82,7 +80,6 @@ export async function checkText() {
     const text = documentWords.map((word) => word.text).join(" ")
     const chechedWordArr = await CheckTextTest(text)
 
-    console.log(chechedWordArr, documentWords)
     await showCorretWords(documentWords, chechedWordArr, context)
   });
 }
