@@ -18,7 +18,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
+      spellcheck: ["./src/spellcheck/spellcheck.js", "./src/spellcheck/spellcheck.html"],
     },
     output: {
       clean: true,
@@ -43,27 +43,16 @@ module.exports = async (env, options) => {
           exclude: /node_modules/,
           use: "html-loader",
         },
-        {
-          test: /\.(png|jpg|jpeg|gif|ico)$/,
-          type: "asset/resource",
-          generator: {
-            filename: "assets/[name][ext][query]",
-          },
-        },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        filename: "taskpane.html",
-        template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"],
+        filename: "spellcheck.html",
+        template: "./src/spellcheck/spellcheck.html",
+        chunks: ["polyfill", "spellcheck"],
       }),
       new CopyWebpackPlugin({
         patterns: [
-          {
-            from: "assets/*",
-            to: "assets/[name][ext][query]",
-          },
           {
             from: "manifest*.xml",
             to: "[name]" + "[ext]",
